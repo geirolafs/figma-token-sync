@@ -66,7 +66,7 @@ The pipeline's own docs, written alongside the code, go deeper: [`figma/README.m
 
 ## provenance
 
-This pipeline was built on top of [satus](https://github.com/darkroomengineering/satus), the open source Next.js starter by [darkroom.engineering](https://darkroom.engineering). Satus provides the style system this plugs into: the config shapes, the fluid layout math, and the oklch color convention are theirs. The Figma sync layer (export snippet, schema, importer, override shell) was built as a pull request against that starter and is extracted here to stand on its own.
+This pipeline was built on top of [satus](https://github.com/darkroomengineering/satus), the open source Next.js starter by [darkroom.engineering](https://darkroom.engineering). Satus provides the style system this plugs into: the config shapes, the fluid layout math, and the oklch color convention are theirs. The Figma sync layer (export snippet, schema, importer, override shell) was built in a fork of that starter, for my own tooling needs, and is extracted here to stand on its own.
 
 In the satus integration the same config fed their Tailwind v4 generator, and every sync was additionally gated by a WCAG AA contrast test. The generator here is a minimal plain-CSS stand-in so the pipeline runs without the starter; the importer, schema, and Figma export are unchanged.
 
