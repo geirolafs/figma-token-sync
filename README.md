@@ -80,4 +80,6 @@ This pipeline was built on top of [satus](https://github.com/darkroomengineering
 
 In the satus integration the same config fed their Tailwind v4 generator, and every sync was additionally gated by a WCAG AA contrast test. The generator here is a minimal plain-CSS stand-in so the pipeline runs without the starter; the importer, schema, and Figma export are unchanged.
 
+The Figma file had no such starting point. The collection structure, the Mobile and Desktop modes, and the line between what can be a bound variable and what has to be a snapshot were worked out from scratch.
+
 MIT licensed. Portions derived from satus, MIT licensed by darkroom.engineering. See [LICENSE](LICENSE).
