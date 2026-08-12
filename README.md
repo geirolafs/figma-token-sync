@@ -2,6 +2,8 @@
 
 Change a color, a spacing value, or a type style in Figma, run one command, and the site's CSS updates to match.
 
+![The Figma file: foundations artboards for theme tokens, type ramp, layout grid, motion, primitives, and UI specimens, all built on variables](docs/figma-overview.png)
+
 ## the problem
 
 Figma and code drift apart. A designer updates the brand red or tightens a heading, an engineer copies the values over by hand, and some of them never make it. Six months later the site and the design file disagree and nobody knows which one is right.
@@ -9,6 +11,10 @@ Figma and code drift apart. A designer updates the brand red or tightens a headi
 This pipeline makes Figma the source of truth. Design tokens live as Figma Variables (colors, themes, grid, type, motion). One command pulls them into the codebase and regenerates the CSS. Every sync is checked against a strict schema first, so a bad export fails loudly instead of silently shipping wrong type.
 
 ## before and after
+
+The palette lives as variables in Figma's Primitives collection:
+
+<img src="docs/figma-primitives.png" alt="Figma variables panel showing the Primitives collection: black, white, red, blue, green" width="720">
 
 A designer nudges the brand red in Figma and exports. The snapshot changes:
 
@@ -61,6 +67,10 @@ That validates the snapshot, regenerates the source config in `styles/`, and wri
 | [`styles/`](styles) | The regenerated config (`colors.ts`, `layout.mjs`, `typography.figma.ts`, `motion.ts`) plus the hand-authored typography override shell (`typography.ts`). |
 | [`scripts/setup-styles.ts`](scripts/setup-styles.ts) | Compiles the config into plain CSS. |
 | [`css/`](css) | The generated output. Never edited by hand. |
+
+Typography is the most involved piece. Each text style gets a `{style}/font-size` and `{style}/line-height` variable pair, with Mobile and Desktop modes mapping straight onto the responsive breakpoints:
+
+<img src="docs/figma-typography.png" alt="Figma variables panel showing the Typography collection: font-size and line-height pairs per text style, with Mobile and Desktop modes" width="720">
 
 The pipeline's own docs, written alongside the code, go deeper: [`figma/README.md`](figma/README.md). They cover the Figma file structure, the typography constraints (why line-height can't be a bound variable, how vertical trim maps to `text-box-trim`), and the code override layer.
 
